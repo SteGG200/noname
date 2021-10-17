@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <title>Grammar</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+			width: 100%;
+			height: 100vh;
+			font-size: 20px;
+			background-color: rgb(187, 187, 245);
+		}
+        .tirtle{
+			text-align: center;
+			font-family: sans-serif;
+			color:white ;
+			margin: 10px;
+		}
+        nav{
+			width: 100%;
+			display: flex;
+			font-family: sans-serif;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		.nav-links{
+			flex: 1;
+			text-align: left;
+			border-top: 4px solid white;
+			border-bottom: 4px solid white;
+			margin-left: 7px;
+			margin-right: 7px;
+		}
+		.nav-links ul{
+			width: 100%;
+			padding-left: 0;
+		}
+		.nav-links ul li{
+			width: 17%;
+			list-style: none;
+			display: inline-block;
+			padding: 8px 12px;
+			position: relative;
+			text-align: center;
+			font-size: 25px;
+		}
+		.nav-links ul li::after{
+			content: '';
+			width: 0%;
+			height: 2px;
+			background-color: wheat;
+			display: block;
+			margin: auto;
+			transition: 0.5s;
+		}
+		.nav-links ul li:hover::after{
+			width: 100%;
+		}
+		.nav-links ul li a{
+			color: white;
+			text-decoration: none;
+		}
+		.span-links{
+			color: white;
+			font-size: 18px;
+		}
+		span .fa{
+			display: none;
+		}
+		nav .fa{
+			display: none;
+		}
+		@media(max-width: 1218px){
+			.nav-links{
+				position: fixed;
+				border-top: 0;
+				border-bottom: 0;
+				background-color: whitesmoke;
+				height: 100%;
+				width: 200px;
+				top: 0;
+				left: -200px;
+				text-align: left;
+				z-index: 2;
+				margin-left: 0;
+				transition: 0.5s;
+			}
+			.nav-links ul li{
+				width: auto;
+				list-style: none;
+				display: block;
+				padding: 8px 12px;
+				position: relative;
+				text-align: left;
+				font-size: 20px;
+
+			}
+			.nav-links ul li a{
+        		width : 100%;
+				color: rgb(187, 187, 245);;
+			}
+			.span-links{
+				display: none;
+			}
+			nav .fa{
+				display: block;
+				color: black;
+				margin: 10px;
+				font-size: 20px;
+				cursor: pointer;
+        		width: 20px;
+			}
+			span .fa{
+				display: block;
+				color: white;
+				margin-left: 10px;
+				margin-top: 10px;
+				font-size: 25px;
+				cursor: pointer;
+        		width: 25px;
+			}
+		}
+        .container{
+            margin-left: 10px;
+			margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .container ol li::marker{
+            color: white;
+            font-weight: bold;
+        }
+        .container ol li a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <span><i class="fa fa-bars" onclick="ShowMenu()"></i></span>
+	<div class="tirtle"><p><h2>Trang web của tui không có tên</h2></p></div>
+	<nav>
+		<div class="nav-links" id="navLinks">
+			<i class="fa fa-times" onclick="HidenMenu()"></i>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/voca">Từ vựng</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/search">Tra từ</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/incl">Thêm từ</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/grammar">Ngữ pháp</a></li>
+			</ul>
+		</div>
+		
+	</nav>
+    <div class="container">
+        <p>Các cấu trúc ngữ pháp có trong trang web:</p>
+        <ol>
+            {{#each grammar}}
+                {{#if title}}
+                    <li><a href="/eng/grammar/{{slug}}">{{title}}</a></li> 
+                {{/if}}
+                {{#unless title}}
+                    <li><a href="/eng/grammar/{{slug}}">{{name}}</a></li>
+                {{/unless}}
+        
+            {{/each}}
+        </ol>
+     </div>
+    <script>
+
+		const navLinks = document.getElementById('navLinks')
+
+		function HidenMenu(){
+			navLinks.style.left = '-200px'
+		}
+
+		function ShowMenu(){
+			navLinks.style.left = '0'
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    {{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
+	{{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+	<title>{{article.title}}</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+			font-size: 20px;
+			background-color:rgb(187, 187, 245);
+		}
+        .title{
+			text-align: center;
+			font-family: sans-serif;
+			color:white ;
+			margin: 10px;
+		}
+        nav{
+			width: 100%;
+			display: flex;
+			font-family: sans-serif;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		.nav-links{
+			flex: 1;
+			text-align: left;
+			border-top: 4px solid white;
+			border-bottom: 4px solid white;
+			margin-left: 7px;
+			margin-right: 7px;
+		}
+		.nav-links ul{
+			width: 100%;
+			padding-left: 0;
+		}
+		.nav-links ul li{
+			width: 17%;
+			list-style: none;
+			display: inline-block;
+			padding: 8px 12px;
+			position: relative;
+			text-align: center;
+			font-size: 25px;
+		}
+		.nav-links ul li::after{
+			content: '';
+			width: 0%;
+			height: 2px;
+			background-color: wheat;
+			display: block;
+			margin: auto;
+			transition: 0.5s;
+		}
+		.nav-links ul li:hover::after{
+			width: 100%;
+		}
+		.nav-links ul li a{
+			color: white;
+			text-decoration: none;
+		}
+		.span-links{
+			color: white;
+			font-size: 18px;
+		}
+		span .fa{
+			display: none;
+		}
+		nav .fa{
+			display: none;
+		}
+		@media(max-width: 1218px){
+			.nav-links{
+				position: fixed;
+				border-top: 0;
+				border-bottom: 0;
+				background-color: whitesmoke;
+				height: 100%;
+				width: 200px;
+				top: 0;
+				left: -200px;
+				text-align: left;
+				z-index: 2;
+				margin-left: 0;
+				transition: 0.5s;
+			}
+			.nav-links ul li{
+				width: auto;
+				list-style: none;
+				display: block;
+				padding: 8px 12px;
+				position: relative;
+				text-align: left;
+				font-size: 20px;
+
+			}
+			.nav-links ul li a{
+        		width : 100%;
+				color: rgb(187, 187, 245);;
+			}
+			.span-links{
+				display: none;
+			}
+			nav .fa{
+				display: block;
+				color: black;
+				margin: 10px;
+				font-size: 20px;
+				cursor: pointer;
+        		width: 20px;
+			}
+			span .fa{
+				display: block;
+				color: white;
+				margin-left: 10px;
+				margin-top: 10px;
+				font-size: 25px;
+				cursor: pointer;
+        		width: 25px;
+			}
+		}
+        .container{
+			margin-left: 10px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+		.list_grammar{
+			width: 211px;
+			height: 500px;
+			background-color:white;
+			overflow: auto;
+			box-shadow: 8px 8px rgba(0, 0, 0, 0.1) ;
+		}
+		.list_grammar ul{
+			padding: 14px;
+			list-style: none;
+			text-align: left;
+		}
+		.list_grammar li{
+			margin: 5px 0 0 0;
+		}
+		.list_grammar a{
+			text-decoration: none;
+			color: cornflowerblue;
+		}
+		.list-style{
+			display: none;
+		}
+		.list_grammar a:hover{
+			text-decoration: underline cornflowerblue;
+		}
+		.list_grammar a:hover .list-style{
+			display: inline;
+		}
+		.list_grammar a:hover .list-style-none{
+			display: none;
+		}
+		.content{
+			background-color:white;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 245px;
+			margin-right: 21%;
+			padding: 5px 0 20px 8px;
+			box-shadow: 8px 8px rgba(0, 0, 0, 0.1) ;
+		}
+        .name{
+            font-family: 'Open Sans', sans-serif;
+            color: orange;
+        }
+		code{
+			font-size: 87.5%;
+			color: #e83e8c;
+			word-break: break-word;
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+		.url {
+			color:cornflowerblue;
+			margin-bottom: 5px;
+			border-bottom: 1px solid cornflowerblue;
+			font-weight: bold;
+		}
+        .url a{
+            text-decoration: none;
+			color:cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <span><i class="fa fa-bars" onclick="ShowMenu()"></i></span>
+	<div class="title"><p><h2>Trang web của tui không có tên</h2></p></div>
+	<nav>
+		<div class="nav-links" id="navLinks">
+			<i class="fa fa-times" onclick="HidenMenu()"></i>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/voca">Từ vựng</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/search">Tra từ</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/incl">Thêm từ</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/grammar">Ngữ pháp</a></li>
+			</ul>
+		</div>
+		
+	</nav>
+	<div class="container">
+		<div class="list_grammar">
+			<ul>
+				{{#each suggestion}}
+					{{#if title}}				
+						<li><a href="/eng/grammar/{{slug}}">
+								<img class="list-style-none" src="https://loigiaihay.com/themes/images/star_black.png" alt="">
+								<img class="list-style" src="https://loigiaihay.com/themes/images/star.png" alt="">
+								{{title}}
+							</a>
+						</li>
+					{{/if}}
+				{{/each}}
+			</ul>
+		</div>
+		<div class="content">
+			<label class="url">
+				{{#if parentURL}}
+					> <a href="/eng/grammar/{{parentURL.slug}}">{{parentURL.name}}</a>
+				{{/if}}
+				{{#unless parentURL}}
+					> <a href="/eng/grammar">Grammar</a>
+				{{/unless}}
+			</label>
+			<h2 class="name">{{article.title}}</h2>
+			{{{article.HTML}}}
+		</div>
+	</div>
+	<script>
+
+		const navLinks = document.getElementById('navLinks')
+
+		function HidenMenu(){
+			navLinks.style.left = '-200px'
+		}
+
+		function ShowMenu(){
+			navLinks.style.left = '0'
+		}
+
+	</script>
+</body>
+</html>

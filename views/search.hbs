@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+	<style>
+		*{
+            margin: 0;
+        }
+        body{
+			width: 100%;
+			height: 100vh;
+			font-size: 20px;
+			background-color: rgb(187, 187, 245);
+		}
+        .tirtle{
+			text-align: center;
+			font-family: sans-serif;
+			color:white ;
+			margin: 10px;
+        }
+        nav{
+			width: 100%;
+			display: flex;
+			font-family: sans-serif;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		.nav-links{
+			flex: 1;
+			text-align: left;
+			border-top: 4px solid white;
+			border-bottom: 4px solid white;
+			margin-left: 7px;
+			margin-right: 7px;
+		}
+		.nav-links ul{
+			width: 100%;
+			padding-left: 0;
+		}
+		.nav-links ul li{
+			width: 17%;
+			list-style: none;
+			display: inline-block;
+			padding: 8px 12px;
+			position: relative;
+			text-align: center;
+			font-size: 25px;
+		}
+		.nav-links ul li::after{
+			content: '';
+			width: 0%;
+			height: 2px;
+			background-color: wheat;
+			display: block;
+			margin: auto;
+			transition: 0.5s;
+		}
+		.nav-links ul li:hover::after{
+			width: 100%;
+		}
+		.nav-links ul li a{
+			color: white;
+			text-decoration: none;
+		}
+		.span-links{
+			color: white;
+			font-size: 18px;
+		}
+		span .fa{
+			display: none;
+		}
+		nav .fa{
+			display: none;
+		}
+		@media(max-width: 1218px){
+			.nav-links{
+				position: fixed;
+				border-top: 0;
+				border-bottom: 0;
+				background-color: whitesmoke;
+				height: 100%;
+				width: 200px;
+				top: 0;
+				left: -200px;
+				text-align: left;
+				z-index: 2;
+				margin-left: 0;
+				transition: 0.5s;
+			}
+			.nav-links ul li{
+				width: auto;
+				list-style: none;
+				display: block;
+				padding: 8px 12px;
+				position: relative;
+				text-align: left;
+				font-size: 20px;
+
+			}
+			.nav-links ul li a{
+        		width : 100%;
+				color: rgb(187, 187, 245);;
+			}
+			.span-links{
+				display: none;
+			}
+			nav .fa{
+				display: block;
+				color: black;
+				margin: 10px;
+				font-size: 20px;
+				cursor: pointer;
+        		width: 20px;
+			}
+			span .fa{
+				display: block;
+				color: white;
+				margin-left: 10px;
+				margin-top: 10px;
+				font-size: 25px;
+				cursor: pointer;
+        		width: 25px;
+			}
+		}
+        .container{
+			margin-left: 10px;
+			margin-bottom: 10px;
+		}
+        label{
+            font-weight: bold;
+			color: oldlace;
+        }
+        .inp{
+            margin: 10px;
+            height: 15px;
+			outline: none;
+			background: transparent;
+			border: 1px solid white;
+        }
+        ::placeholder{
+            color: white;
+			padding-left:2px ;
+        }
+        button{
+			width: 60px;
+			border:2px solid white;
+			border-radius: 0;
+			outline: none;
+			background:transparent;
+			color :white;
+			font-family: sans-serif;
+			cursor: pointer;
+			text-align: center;
+			margin-left: auto;
+            margin-bottom: 10px;
+		}
+		button:hover{
+			border:2px solid rgb(36, 35, 35);
+			background-color: yellowgreen;
+			color: black;
+		}
+        table{
+            margin-top: 3px;
+        }
+        table ,th, td{
+            border: 1px solid red;
+            padding: 3px;
+            text-align: center;
+			border-collapse: collapse;
+        }
+		.check{
+			color: red;
+			font-weight: bold;
+			font-family: sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<span><i class="fa fa-bars" onclick="ShowMenu()"></i></span>
+	<div class="tirtle"><p><h2>Tra từ</h2></p></div>
+	<nav>
+		<div class="nav-links" id="navLinks">
+			<i class="fa fa-times" onclick="HidenMenu()"></i>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/voca">Từ vựng</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/search">Tra từ</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/incl">Thêm từ</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng/grammar">Ngữ pháp</a></li>
+			</ul>
+		</div>
+		
+	</nav>
+	<div class="container">
+		<p>Đây là nơi bạn có thể tra từ có trong trang web</p>
+		<br>
+		{{#if check}}
+			<p class="check">{{check}}</p>
+		{{/if}}
+		<form action="/eng/search" method="post">
+			<label for="Eng">Nhập từ Tiếng Anh bạn cần tra:</label>
+			<input class="inp" type="text" id="Eng" name="Eng" placeholder="Từ Tiếng Anh">
+			<br>
+			<label for="mean">Nhập nghĩa bạn cần dịch:</label>
+			<input class="inp" type="text" id="mean" name="mean" placeholder="Nghĩa">
+			<br>
+			<button>Tìm</button>
+		</form>
+		{{#unless result}}
+			{{#if s}}
+				<p>{{s}}</p>
+				<table>
+					<tr>
+						<th>Từ</th>
+						<th>Loại từ</th>
+						<th>Nghĩa</th>
+					</tr>
+					{{#each search}}
+					<tr>
+						<td>{{Eng}}</td>
+						<td>{{type}}</td>
+						<td>{{mean}}</td>
+					</tr>
+					{{/each}}
+				</table>
+			{{/if}}
+		{{/unless}}
+		{{#if result}}
+			<p>{{result}}</p>
+		{{/if}}
+	</div>
+	<script>
+
+		const navLinks = document.getElementById('navLinks')
+
+		function HidenMenu(){
+			navLinks.style.left = '-200px'
+		}
+
+		function ShowMenu(){
+			navLinks.style.left = '0'
+		}
+
+	</script>
+</body>
+</html>

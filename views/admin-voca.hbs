@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Manager Vocabulary</title>
+	<style>
+		.input{
+			border: 1px solid red;
+			padding: 1px;
+			text-align: center;
+			width: 500px;
+			margin-bottom: 10px;
+		}
+		input{
+			height: 20px;
+			outline: none;
+			background: transparent;
+			border: 1px solid blue;
+		}
+		::placeholder{
+			color: blue;
+			padding-left:2px ;
+		}
+		select{
+			height: 23px;
+			outline: none;
+			background: transparent;
+			border: 1px solid blue;
+			color: blue;
+		}
+		option{
+			padding-left:2px ;
+		}
+		button{
+			width: 60px;
+			border:2px solid blue;
+			border-radius: 0;
+			outline: none;
+			background:transparent;
+			color :blue;
+			font-family: sans-serif;
+			cursor: pointer;
+			text-align: center;
+			margin-left: auto;
+			margin-bottom: 10px;
+		}
+		button:hover{
+			border:2px solid rgb(36, 35, 35);
+			background-color: yellowgreen;
+			color: black;
+		}
+		.list,.list th,.list td{
+			border: 1px solid red;
+			padding: 3px;
+			text-align: center;
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+	<form action="/ad-voca" method="post">
+		<table class="input">
+			<tr>
+				<th>Từ Tiếng Anh</th>
+				<th>Loại từ</th>
+				<th>Nghĩa</th>
+			</tr>
+			<tr>
+				<td><input type="text" id="Eng" name="Eng" placeholder="Từ Tiếng Anh"></td>
+				<td>
+					<select name="type" id="type" aria-placeholder="Loại từ">
+						<option value="noun">noun</option>
+						<option value="verb">verb</option>
+						<option value="adj">adj</option>
+						<option value="adv">adv</option>
+						<option value="con">con</option>
+						<option value="pre">pre</option>
+					</select>
+				</td>
+				<td><input type="text" id="mean" name="mean" placeholder="Nghĩa"></td>
+			</tr>
+		</table>
+		<button>Gửi</button>
+	</form>
+	<table class="list">
+		<tr>
+			<th>Từ</th>
+			<th>Loại từ</th>
+			<th>Nghĩa</th>
+		</tr>
+		{{#each voca_main}}
+			<tr>
+				<td>{{Eng}}</td>
+				<td>{{type}}</td>
+				<td>{{mean}}</td>
+			</tr>
+		{{/each}}
+	</table>
+</body>
+</html>

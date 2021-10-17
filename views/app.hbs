@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>App</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+	<style>
+		*{
+			margin: 0;
+		}
+		body{
+			width: 100%;
+			height: 100vh;
+			font-size: 20px;
+			background-color: rgb(187, 187, 245);
+		}
+		.tirtle{
+			margin: 10px;
+			text-align: center;
+			font-family: sans-serif;
+			color: white;
+		}
+		nav{
+			width: 100%;
+			display: flex;
+			font-family: sans-serif;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		.nav-links{
+			flex: 1;
+			text-align: left;
+			border-top: 4px solid white;
+			border-bottom: 4px solid white;
+			margin-left: 7px;
+			margin-right: 7px;
+		}
+		.nav-links ul{
+			width: 100%;
+			padding-left: 0;
+		}
+		.nav-links ul li{
+			width: 22%;
+			list-style: none;
+			display: inline-block;
+			padding: 8px 12px;
+			position: relative;
+			text-align: center;
+			font-size: 25px;
+		}
+		.nav-links ul li::after{
+			content: '';
+			width: 0%;
+			height: 2px;
+			background-color: wheat;
+			display: block;
+			margin: auto;
+			transition: 0.5s;
+		}
+		.nav-links ul li:hover::after{
+			width: 100%;
+		}
+		.nav-links ul li a{
+			color: white;
+			text-decoration: none;
+		}
+		.span-links{
+			color: white;
+			font-size: 18px;
+		}
+		span .fa{
+			display: none;
+		}
+		nav .fa{
+			display: none;
+		}
+		@media(max-width: 1218px){
+			.nav-links{
+				position: fixed;
+				border-top: 0;
+				border-bottom: 0;
+				background-color: whitesmoke;
+				height: 100%;
+				width: 200px;
+				top: 0;
+				left: -200px;
+				text-align: left;
+				z-index: 2;
+				margin-left: 0;
+				transition: 0.5s;
+			}
+			.nav-links ul li{
+				width: auto;
+				list-style: none;
+				display: block;
+				padding: 8px 12px;
+				position: relative;
+				text-align: left;
+				font-size: 20px;
+
+			}
+			.nav-links ul li a{
+        		width : 100%;
+				color: rgb(187, 187, 245);;
+			}
+			.span-links{
+				display: none;
+			}
+			nav .fa{
+				display: block;
+				color: black;
+				margin: 10px;
+				font-size: 20px;
+				cursor: pointer;
+        		width: 20px;
+			}
+			span .fa{
+				display: block;
+				color: white;
+				margin-left: 10px;
+				margin-top: 10px;
+				font-size: 25px;
+				cursor: pointer;
+       			width: 25px;
+			}
+		}
+		.container{
+			margin-left: 10px;
+			margin-bottom: 10px;
+		}
+		.para{
+			margin-bottom: 5px;
+		}
+		.list {
+			font-weight: bold;
+			color: oldlace;
+			font-size: 25px;
+		}
+		table, th, td{
+            border: 1px solid red;
+            padding: 3px;
+            text-align: center;
+			border-collapse: collapse;
+        }
+		table{
+			margin-bottom: 10px;
+		}
+		.app{
+			color: oldlace;
+		}
+		.plot{
+			margin-left: 10px;
+		}
+		.img{
+			display: block;
+			text-align: center;
+			font-size: 14px;
+		}
+		footer{
+			margin-left: 10px;
+			padding-bottom: 10px;
+			text-align: center;
+			font-family: sans-serif;
+			font-weight: bold;
+			color: whitesmoke;
+		}
+	</style>
+</head>
+<body>
+	<span><i class="fa fa-bars" onclick="ShowMenu()"></i></span>
+	<div class="tirtle"><p><h2>Trang web của tui không có tên</h2></p></div>
+	<nav>
+		<div class="nav-links" id="navLinks">
+			<i class="fa fa-times" onclick="HidenMenu()"></i>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/app">App</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/eng">English</a></li>
+				<span class="span-links">|</span>
+				<li><a href="/ad-login">Admin</a></li>
+			</ul>
+		</div>
+		
+	</nav>
+	<div class="container">
+		<p>Đây là nơi mà bạn có thể tải một số ứng dụng của tôi</p>
+		<p>Những ứng dụng sau hoàn toàn miễn phí,và bạn có thể tải về thông qua Google Drive và giải nén ra</p>
+		<p>Phần ứng dụng là file .exe trong thư mục dist</p>
+		<p class="para">(Lưu ý: Các ứng dụng này đều đc viết bằng python nên có thể chạy hơi chậm)</p>
+		<label class="list">Cấu hình tối thiểu để tải :</label>
+		<table>
+			<tr>
+				<th></th>
+				<th>Tối thiểu</th>
+				<th>"Mượt mà"</th>
+			</tr>
+			<tr>
+				<td>Xung nhịp</td>
+				<td>1.10GHz</td>
+				<td>3.00GHz</td>
+			</tr>
+			<tr>
+				<td>RAM</td>
+				<td>1 GB RAM</td>
+				<td>2 GB RAM</td>
+			</tr>
+			<tr>
+				<td>Dung lượng ổ cứng trống</td>
+				<td>200 MB</td>
+				<td>1 GB</td>
+			</tr>
+			<tr>
+				<td>Hệ điều hành</td>
+				<td>Từ window 8 trở lên</td>
+				<td>Window 11</td>
+			</tr>
+		</table>
+		<label class="list">Các ứng dụng như sau:</label>
+		<p class="app">1. CLOCK 2:</p>
+		<p class="plot">Đây là ứng dụng cho phép bạn đếm giờ một cách chính xác.</p>
+	<div class ="img">
+		<img src="https://cdn.glitch.com/441f3604-33d6-42fa-b976-3b1456a0df5d%2FCLOCK%202%207_22_2021%2012_40_26%20PM.png?v=1626932452064" alt="Lỗi ảnh">
+	</div>
+		<p class="plot">Bạn có thể dừng lại khi đang đếm, reset thời gian và......hết rồi.Ngoài ra đây là phiên bản thứ 3 của CLOCK và rất có thể là phiên bản cuối cùng.Hiện tại, việc làm CLOCK 3 đang bị trì hoãn vô thời hạn nên ko biết khi nào ra mắt do bị vướng vào một số thứ<strong> (Chủ yếu do tôi lười quá mà ahihi)</strong>.Phiên bản thứ 3 đc bổ sung thêm rất nhiều tính năng mới như là.....KHÔNG THỂ CẢN PHÁ.....</p>
+		<p class="plot">Linh tải:<a href="https://drive.google.com/file/d/1M_So5BS6kdNx1ZkA7omtipGbmvldm-WA/view?usp=sharing" target="_blank" rel="noopener noreferrer"> CLOCK 2</a></p>
+		<br>
+		<p class="app">2. AI assistant:</p>
+		<p class="plot"><strong>AI assistant </strong> là một ứng dụng trợ lí ảo giúp bạn rất nhiều việc với PC của bạn như search google ,youtube ,thay đổi hình nền máy tính, search wiki... </p>
+		<p class="plot">Tuy nhiên, ứng dụng vẫn còn nhiều hạn chế.</p>
+	<div class="img">
+		<img src="https://cdn.glitch.com/441f3604-33d6-42fa-b976-3b1456a0df5d%2Fai.exe%20-%20Shortcut%207_22_2021%2012_49_22%20PM.png?v=1626932987250" alt="Lỗi ảnh">
+		<p>Màn hình chỉ là đen trắng.</p>
+	</div>
+		<p class="plot">Lỗi khi search google, youtube,..và loading cũng rất chậm.</p>
+		<p class="plot">Nhìn chung ứng dụng vẫn còn có thể sử dụng được.</p>
+		<p class="plot">Link tải: <a href="https://drive.google.com/file/d/1KJ5_NFVpdxzczlf2QtnLd1gw6Iu7KN4B/view?usp=sharing" target="_blank" rel="noopener noreferrer">AI assistant</a></p>
+		<br>
+		{{!-- <p class="app">3. LOL FA KE</p>
+		<p class="plot"><strong>LOL FA KE </strong>là một tựa game lấy cảm hứng từ Liên Minh Huyền Thoại PC. Mặc dù vậy, đồ họa của nó vẫn còn rất 'si da' , bạn chỉ điều khiển một khối vuông giao chiến với một khối vuông khác do AI điều khiển.</p>
+		<div class="img">
+	<img src="https://cdn.glitch.com/441f3604-33d6-42fa-b976-3b1456a0df5d%2FLOL%20FA%20KE%207_22_2021%2012_53_35%20PM.png?v=1626933260415" alt="Lỗi ảnh">
+	</div>
+		<p class="plot">Di chuyển, hiệu ứng các chiêu thứ cũng khá giống với LOL .Tuy nhiên game còn chưa có cấp độ, kinh nghiệm, lính, quái,...Đơn thuần nó chỉ là game đối kháng 1vs1. Tựa game cũng đòi hỏi kĩ năng người chơi khi hầu hết các chiêu thức trong game đều là chiêu định hướng.Tổng dame của cả hai bên đều bằng nhau từ bộ chiêu thức, vì thế ai sử dụng chiêu thức hợp lí thì người đó ăn.</p>
+		<p class="plot">Tựa game này mới có bản demo (Bản demo chỉ có chiêu thức của người chơi, con bot ko tấn công, ko có máu, bãi cỏ, địa hình,...)</p>
+		<p class="plot">Linh tải bản demo: <a href="https://drive.google.com/file/d/1DXkZfrwxHxw9cmgp5UAcRVti7nHVtS5v/view?usp=sharing" target="_blank" rel="noopener noreferrer">LOL FA KE</a></p>
+		<br> --}}
+		<p>Và đó là tất cả những ứng dụng mà bạn có thể tải về trải nghiệm.Nhớ hãy để bình luận ở trang chủ nhé!!!</p>
+		<p>(Cập nhật lần cuối vào ngày 22/7/2021)</p>
+	</div>
+	<footer>
+		<p>PEACE ny ny!!</p>
+	</footer>
+	<script>
+
+		const navLinks = document.getElementById('navLinks')
+
+		function HidenMenu(){
+			navLinks.style.left = '-200px'
+		}
+
+		function ShowMenu(){
+			navLinks.style.left = '0'
+		}
+
+	</script>
+</body>
+</html>

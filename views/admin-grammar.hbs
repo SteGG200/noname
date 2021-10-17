@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Manager Grammar</title>
+    <style>
+        .New{
+            margin-left: 3px;
+            margin-top: 3px;
+        }
+        .d-flex .change{
+            display: none;
+        }
+        .d-flex:hover{
+            background-color: rgba(200, 200, 200, 0.3);
+        }
+        .d-flex:hover .change{
+            display: block;
+            margin-right: 5px;
+        }
+        ul{
+            list-style-type:initial ;
+        }
+        .list{
+            margin-left: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="New">
+        <a href="/ad-grammar/new_folder" class="btn btn-secondary">New folder</a>
+        <a href="/ad-grammar/new_blog" target="_blank" rel="noopener noreferrer" class="btn btn-success">New blog</a>
+    </div>
+    <div>
+        <label for="blogs" class="list"><h3>Danh sách các blog</h3></label>
+        <ul name="blogs" id="blogs">
+            {{#each grammar}}
+                {{#if title}}
+                    <li>
+                        <div class="d-flex">
+                            <a href="/eng/grammar/{{slug}}" target="_blank" rel="noopener noreferrer" class="p-2 mr-auto">{{title}}</a>
+                            <a href="/ad-grammar/edit/{{slug}}" target="_blank" rel="noopener noreferrer" class="change p-2 btn btn-info">Edit</a>
+                            <form action="/ad-grammar/{{slug}}?_method=DELETE" method="post">
+                                <button class="change p-2 btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </li>
+                {{/if}}
+                {{#unless title}}
+                    <li>
+                        <div class="d-flex">
+                            <a href="/eng/grammar/{{slug}}" target="_blank" rel="noopener noreferrer" class="p-2 mr-auto">{{name}}</a>
+                            <a href="/ad-grammar/edit/{{slug}}" class="change p-2 btn btn-info">Edit</a>
+                            <form action="/ad-grammar/{{slug}}?_method=DELETE" method="post">
+                                <button class="change p-2 btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </li>
+                {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+</body>
+</html>
